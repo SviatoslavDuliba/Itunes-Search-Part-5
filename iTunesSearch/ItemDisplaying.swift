@@ -6,7 +6,7 @@ protocol ItemDisplaying {
     var titleLabel: UILabel! { get set }
     var detailLabel: UILabel! { get set }
 }
-
+//MARK: - Extension
 @MainActor
 extension ItemDisplaying {
     func configure(for item: StoreItem, storeItemController: StoreItemController) async {
