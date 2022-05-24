@@ -6,6 +6,10 @@ class StoreItemCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        collectionView.register(StoreItemCollectionViewSectionHeader.self,
+                                forSupplementaryViewOfKind:"Header",
+                                withReuseIdentifier: StoreItemCollectionViewSectionHeader.reuseIdentifier)
+    }
         func configureCollectionViewLayout(for searchScope: SearchScope) {
             let itemSize = NSCollectionLayoutSize(widthDimension:
                                                         .fractionalWidth(1/3), heightDimension:
@@ -28,10 +32,6 @@ class StoreItemCollectionViewController: UICollectionViewController {
             let layout = UICollectionViewCompositionalLayout(section: section)
             collectionView.collectionViewLayout = layout
         }
-        
-        collectionView.register(StoreItemCollectionViewSectionHeader.self,
-                                forSupplementaryViewOfKind:"Header",
-                                withReuseIdentifier: StoreItemCollectionViewSectionHeader.reuseIdentifier)
     }
     
-}
+

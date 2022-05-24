@@ -45,30 +45,5 @@ struct StoreItem: Codable, Hashable {
         self.description = (try? container.decode(String.self, forKey: .description)) ?? (try? additionalContainer.decode(String.self, forKey: .description)) ?? "--"
     }
 }
-//MARK: - Function
-func createSectionedSnapshot(from items: [StoreItem]) ->
-   NSDiffableDataSourceSnapshot<String, StoreItem> {
-    let movies = items.filter { $0.kind == "feature-movie" }
-    let music = items.filter { $0.kind == "song" || $0.kind == "album" }
-    let apps = items.filter { $0.kind == "software" }
-    let books = items.filter { $0.kind == "ebook" }
-
-    let grouped: [(SearchScope, [StoreItem])] = [
-        (.movies, movies),
-        (.music, music),
-        (.apps, apps),
-        (.books, books)
-    ]
-
-    var snapshot = NSDiffableDataSourceSnapshot<String, StoreItem>()
-    grouped.forEach { (scope, items) in
-        if items.count > 0 {
-            snapshot.appendSections([scope.title])
-            snapshot.appendItems(items, toSection: scope.title)
-        }
-    }
-
-    return snapshot
-}
 
 
