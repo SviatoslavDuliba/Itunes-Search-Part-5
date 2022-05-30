@@ -1,5 +1,10 @@
 
 import Foundation
+import UIKit
+//MARK: - Properties
+struct SearchResponse: Codable {
+    let results: [StoreItem]
+}
 
 struct StoreItem: Codable, Hashable {
     let name: String
@@ -41,6 +46,4 @@ struct StoreItem: Codable, Hashable {
     }
 }
 
-struct SearchResponse: Codable {
-    let results: [StoreItem]
-}
+
